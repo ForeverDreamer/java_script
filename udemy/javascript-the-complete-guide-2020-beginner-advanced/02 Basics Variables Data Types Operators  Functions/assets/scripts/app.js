@@ -75,10 +75,43 @@ function divide() {
     writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
 }
 
-addBtn.addEventListener('click', add);
-subtractBtn.addEventListener('click', subtract);
-multiplyBtn.addEventListener('click', multiply);
-divideBtn.addEventListener('click', divide);
+function calculate(operation) {
+    const enteredNumber = getUserNumberInput();
+    const initialResult = currentResult;
+    let operator;
+    switch (operation) {
+        case 'ADD':
+            operator = '+';
+            currentResult += enteredNumber;
+            break;
+        case 'SUBTRACT':
+            operator = '-';
+            currentResult -= enteredNumber;
+            break;
+        case 'MULTIPLY':
+            operator = '*';
+            currentResult *= enteredNumber;
+            break;
+        case 'DIVIDE':
+            operator = '/';
+            currentResult /=  enteredNumber;
+            break;
+        default:
+            return;
+    }
+    createAndWriteOutput(operator, initialResult, enteredNumber);
+    writeToLog(operation, initialResult, enteredNumber, currentResult);
+}
+
+// addBtn.addEventListener('click', add);
+// subtractBtn.addEventListener('click', subtract);
+// multiplyBtn.addEventListener('click', multiply);
+// divideBtn.addEventListener('click', divide);
+
+addBtn.addEventListener('click', calculate.bind(this, 'ADD'));
+subtractBtn.addEventListener('click', calculate.bind(this, 'SUBTRACT'));
+multiplyBtn.addEventListener('click', calculate.bind(this, 'MULTIPLY'));
+divideBtn.addEventListener('click', calculate.bind(this, 'DIVIDE'));
 
 // currentResult = (currentResult + 10) * 3 / 2 - 1;
 // currentResult = add(1, 2);

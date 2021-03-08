@@ -1,6 +1,6 @@
 const movieList = document.getElementById('movie-list');
 // 三钟语法都能设置背景元素
-movieList.style.backgroundColor = 'redd';
+movieList.style.backgroundColor = 'red';
 movieList.style['backgroundColor'] = 'red';
 movieList.style['background-color'] = 'red';
 
